@@ -4,7 +4,7 @@ style: plain
 
 # Systematic bias of correlation coefficient may explain negative accuracy of genomic prediction
 
-\[\[toc\]\]
+
 
 ## 摘要
 
