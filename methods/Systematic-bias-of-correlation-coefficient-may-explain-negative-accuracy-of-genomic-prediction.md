@@ -96,7 +96,7 @@ style: plain
 
 $$
 
-\widehat{p}=r\[1+\frac{\(1-r^2\)}{2\(n-4\)}\]
+\widehat{p}=r[1+\frac{(1-r^2)}{2(n-4)}]
 
 $$
 
@@ -115,7 +115,7 @@ $$
 
 $$
 
-\frac{\frac{\(x\_1-\hat{x}\)^2+\(x\_2-\hat{x}\)^2}{2}+\frac{\(x\_3-\hat{x}\)^2+\(x\_4-\hat{x}\)^2}{2}}{2}=\frac{\(x\_1-\hat{x}\)^2+\(x\_2-\hat{x}\)^2+\(x\_3-\hat{x}\)^2+\(x\_4-\hat{x}\)^2}{4}
+\frac{\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2}{2}+\frac{(x_3-\hat{x})^2+(x_4-\hat{x}\)^2}{2}}{2}=\frac{(x_1-\hat{x}\)^2+(x_2-\hat{x})^2+\(x_3-\hat{x}\)^2+(x_4-\hat{x})^2}{4}
 
 $$
 
