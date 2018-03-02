@@ -30,7 +30,7 @@ style: plain
 
 图示：
 
-![](/images/cross-validation.png)
+![](/methods/images/cross-validation.png)
 
 ## 结果
 
@@ -44,7 +44,7 @@ style: plain
 
 文中一般研究均使用的是5倍交叉验证。所以研究者将其中一套真实数据随机分成5个size相同的集合时，分别统计了这5个集合的表型值（吐丝时间：连续值），结果如下图所示：
 
-![](/images/figure1.png)
+![](/methods/images/figure1.png)
 
 > Negative correlation between means of references and inferences in cross-validation. The phenotype evaluated was flowering time, measured as DTS, from 260 maize inbred lines. The flowering-time phenotypes were randomly clustered into five evenly-sized groups, indicated by different signs \(A\). The phenotypic distribution for each group is illustrated in \(B\). The group numbers in \(B\) match the group numbers in \(C\). The signs in \(C\) match the group signs in \(A\). The means of inferences are indicated by open signs \(C\). The means of the other four groups as references are indicated by the filled signs for each inference group. The means of inference and reference are 100% negatively correlated \(D\).
 
@@ -56,7 +56,7 @@ style: plain
 
 如前一小节所说，如果training set中的表型均值越大，那么test set中的表型均值则越小。又因为training set中的表型均值更大一些，所以所训练出来的模型就更倾向于预测test set更大的值。有这些关系可以推断出，如果直接使用`Hold accuracies`进行评估，本身就会有一些负相关偏好在其中。其结果如下图所示：
 
-![](/images/figure2.png)
+![](/methods/images/figure2.png)
 
 > ABC图表示的训练出的模型对training set作用所获得的结果。DEF则是对test set作用所获得结果。
 
@@ -66,7 +66,7 @@ style: plain
 
 利用交叉验证，使用的倍数越多（More fold），则偏好越大，如下图所示：
 
-![](/images/figure3.png)
+![](/methods/images/figure3.png)
 
 ### Differences in prediction accuracy between Hold and Instant approaches
 
@@ -75,7 +75,7 @@ style: plain
 这一部分我的理解是：对于一个数据集，本身是有真实表型的（假设SNP及表型集是100%相关的），然后将本身的真实表型部分打乱，最终达到一个相关度0.125~0.75。然后在按照之前的方法进行分析，同样还会逐步改变样本数目。结果如下图所  
 示：
 
-![](/images/figure4.png)
+![](/methods/images/figure4.png)
 
 可以发现，这些条件的变化，Instant accuracy都要比Hold accuracy要高。而且在同样的继承性的条件下，样本数目越多，准确度越高。
 
@@ -84,7 +84,7 @@ style: plain
 前几小节的结论都是Instant accuracy的结果要比Hold accuracy好。但也不是代表Instant accuracy没有问题。由于它是分每一次做一个相关性，然后计算相关性的均值。由于本身pearson相关系数的特性，就是对于小样本量，相关系数会有偏（Fisher大  
 神说的），所以当样本量很少的情况下，Instant accuracy结果就会出现问题。如下图所示：
 
-![](/images/figure5.png)
+![](/methods/images/figure5.png)
 
 从上图中，可以发现，随着fold数目的增加，test set中的样本越来越少（fold数越多，相当于将样本集平均分成了多少份）准确性会下降。而且这种下降不是由于模型出问题（因为training set的样本数大，所以模型应该是更好的），而只能是算法出现了问题。
 
@@ -95,7 +95,11 @@ style: plain
 矫正公式如下：
 
 
-{% math %}\widehat{p}=r[1+\frac{(1-r^2)}{2(n-4)}]{% endmath %} 
+$$
+
+\widehat{p}=r[1+\frac{(1-r^2)}{2(n-4)}]
+
+$$ 
 
 
 其中n为样本数，r为pearson相关系数
@@ -112,7 +116,10 @@ style: plain
 2. 有些差异就是机器学习的regression都是利用差值来进行寻找最小误差，从而获得最优模型。最终评估结果也是利用差异大小来评估，使用差值就不存在Instant accuracy和Hold accuracy了。
 
 
-{% math %}\frac{\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2}{2}+\frac{(x_3-\hat{x})^2+(x_4-\hat{x})^2}{2}}{2}=\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2+(x_3-\hat{x})^2+(x_4-\hat{x})^2}{4}{% endmath %} 
+$$
+\frac{\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2}{2}+\frac{(x_3-\hat{x})^2+(x_4-\hat{x})^2}{2}}{2}=\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2+(x_3-\hat{x})^2+(x_4-\hat{x})^2}{4}
+
+$$
 
 
 上述是一样的。所以利用差值是不存在这种情况。以后如果做类似的工作，可以试试使用pearson相关系数来进行结果评估。
