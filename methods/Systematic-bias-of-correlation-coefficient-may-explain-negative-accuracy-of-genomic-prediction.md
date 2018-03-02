@@ -95,9 +95,7 @@ style: plain
 矫正公式如下：
 
 
-$$
-\widehat{p}=r[1+\frac{(1-r^2)}{2(n-4)}]
-$$
+{% \widehat{p}=r[1+\frac{(1-r^2)}{2(n-4)}] %}
 
 
 其中n为样本数，r为pearson相关系数
@@ -114,9 +112,7 @@ $$
 2. 有些差异就是机器学习的regression都是利用差值来进行寻找最小误差，从而获得最优模型。最终评估结果也是利用差异大小来评估，使用差值就不存在Instant accuracy和Hold accuracy了。
 
 
-$$
-\frac{\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2}{2}+\frac{(x_3-\hat{x})^2+(x_4-\hat{x})^2}{2}}{2}=\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2+(x_3-\hat{x})^2+(x_4-\hat{x})^2}{4}
-$$
+{% \frac{\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2}{2}+\frac{(x_3-\hat{x})^2+(x_4-\hat{x})^2}{2}}{2}=\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2+(x_3-\hat{x})^2+(x_4-\hat{x})^2}{4} %}
 
 
 上述是一样的。所以利用差值是不存在这种情况。以后如果做类似的工作，可以试试使用pearson相关系数来进行结果评估。
