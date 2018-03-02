@@ -1,7 +1,3 @@
 {
-    "pluginsConfig": {
-        "mathjax":{
-            "forceSVG": true
-        }
-    }
+    "plugins": ["mathjax"]
 }
