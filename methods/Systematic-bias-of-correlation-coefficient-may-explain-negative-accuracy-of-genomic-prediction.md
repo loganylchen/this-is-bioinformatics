@@ -1,7 +1,3 @@
----
-style: plain
----
-
 # Systematic bias of correlation coefficient may explain negative accuracy of genomic prediction
 
 ## 摘要
