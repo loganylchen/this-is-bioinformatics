@@ -94,85 +94,123 @@ java -jar GenomeAnalysisTK.jar \
 
 DOC_test：第一列为位置，第二列为总深度，第三列为平均深度，第四列则为样本深度（如果输入多个bam，就会出现后续会有后续列）
 >Locus	Total_Depth	Average_Depth_sample	Depth_for_1
-chr17:48745062	60	60.00	60
-chr17:48745063	59	59.00	59
-chr17:48745064	62	62.00	62
-chr17:48745065	61	61.00	61
-chr17:48745066	62	62.00	62
-chr17:48745067	64	64.00	64
-chr17:48745068	65	65.00	65
-chr17:48745069	65	65.00	65
-chr17:48745070	65	65.00	65
+
+>chr17:48745062	60	60.00	60
+
+>chr17:48745063	59	59.00	59
+
+>chr17:48745064	62	62.00	62
+
+>chr17:48745065	61	61.00	61
+
+>chr17:48745066	62	62.00	62
+
+>chr17:48745067	64	64.00	64
+
+>chr17:48745068	65	65.00	65
+
+>chr17:48745069	65	65.00	65
+
+>chr17:48745070	65	65.00	65
 
 
 DOC_test.sample_summary：第一列为样本Id，第二列为总的碱基数目，第三列为target区域平均深度**我们的区域不是13，而是22，但是我们可以发现974和74.32之间的关系却是13，这是因为我输入的bed中有9bp（chr22:100-110），他们在参考基因组上其实都是N，所以默认情况下，这个区域是会被去掉的，后续会有参数能够改变这个默认情况（--includeRefNSites）**，第四列~第六列是分位数，第七列为默认计算超过15X的区域所占百分比
 >sample_id	total	mean	granular_third_quartile	granular_median	granular_first_quartile	%_bases_above_15
-1	974	74.92	100	66	63	100.0
-Total	974	74.92	N/A	N/A	N/A
+
+>1	974	74.92	100	66	63	100.0
+
+>Total	974	74.92	N/A	N/A	N/A
 
 
 DOC_test.sample_cumulative_coverage_proportions：覆盖度的累积分布，下列是其中一部分，表示的是深度不小于0X的区域在test_0001这个样本中占100%的区域，`gte`表示`>=`
 >	gte_0	gte_1	gte_2	gte_3	gte_4	gte_5	gte_6	gte_7...
+
 >1	1.00	1.00	1.00	1.00	1.00	1.00	1.00	1.00...
 
 DOC_test.sample_cumulative_coverage_counts：结果同上，只是输出不是比例，而是确切位点数，从这也可以看出我们的区域大小是`13`，但其实还有一个区域是因为ref是N所以被去掉了。
 >	gte_0	gte_1	gte_2	gte_3	gte_4...
+
 >NSamples_1	13	13	13	13	13...
 
 DOC_test.sample_statistics：上述为深度覆盖的累积分布，这一项结果为每一个深度确切位点数。位点深度为0的位点数为`0`正好是`gte_0-gte_1(13-13)`
 >Source_of_reads	from_0_to_1)	from_1_to_2)	from_2_to_3)...
+
 >sample_test_0001	0	0	0...
 
 DOC_test.sample_interval_statistics：**平均深度**超过x的区域数目，因为是超过的统计，所以大于1的肯定也会统计到大于0的里面。而且从这也可以看出我们的bed区域一共有多少区域（`3`）**很奇怪，这个时候他会计算ref为N的那个区域，因为真实情况下我是输入了3个区域，按照位点的时候，他都没有算第三个区域，但是算区域的时候，他会计算第三个区域**
 >	depth>=0	depth>=1	depth>=2...
+
 >At_least_1_samples	3	2	2...
 
 DOC_test.sample_interval_summary：每个区域的深度详情，第一列为区域，第二列为总深度，第三列为平均深度，第四列~第九列是一个样本的（总深度、平均深度、1分位、中位数、三分位及默认的超过15X的区域在该区域中所占比例）
 >Target	total_coverage	average_coverage	test_0001_total_cvg	test_0001_mean_cvg	test_0001_granular_Q1	test_0001_granular_median	test_0001_granular_Q3	test_0001_%_above_15
-chr17:48745062-48745070	563	62.56	563	62.56	62	63	66	100.0
-chr19:12874507-12874510	411	102.75	411	102.75	100	102	106	100.0
-chr22:101-110	0	NaN	0	NaN	1	1	1	NaN
+
+>chr17:48745062-48745070	563	62.56	563	62.56	62	63	66	100.0
+
+>chr19:12874507-12874510	411	102.75	411	102.75	100	102	106	100.0
+
+>chr22:101-110	0	NaN	0	NaN	1	1	1	NaN
 
 
 **B**方案结果：
 DOC_test：第一列为位置，第二列为总深度，第三列为平均深度，第四列则为样本深度（如果输入多个bam，就会出现后续会有后续列）
 >Locus	Total_Depth	Average_Depth_sample	Depth_for_test_0001
+
 >chr1:17346	0	0.00	0
+
 >chr1:17347	0	0.00	0
+
 >chr1:17348	0	0.00	0
+
 >chr1:17349	0	0.00	0
+
 >chr1:17350	0	0.00	0
+
 >chr1:17351	0	0.00	0
+
 >chr1:17352	0	0.00	0
+
 >chr1:17353	0	0.00	0
+
 >chr1:17354	0	0.00	0
 
 DOC_test.sample_summary：第一列为样本Id，第二列为总的碱基数目，第三列为target区域平均深度（我们的bed区域为46584178，所以我们算一下46584178*0.44差不多就是总数目，但是有出入，后续会说明出入在哪），第四列~第六列是分位数，第七列为默认计算超过15X的区域所占百分比
 >sample_id	total	mean	granular_third_quartile	granular_median	granular_first_quartile	%_bases_above_15
-test_0001	20440631	0.44	1	1	1	0.0
-Total	20440631	0.44	N/A	N/A	N/A
+
+>test_0001	20440631	0.44	1	1	1	0.0
+
+>Total	20440631	0.44	N/A	N/A	N/A
 
 DOC_test.sample_cumulative_coverage_proportions：覆盖度的累积分布，下列是其中一部分，表示的是深度不小于0X的区域在test_0001这个样本中占100%的区域，`gte`表示`>=`
 >	gte_0	gte_1	gte_2	gte_3	gte_4	gte_5	gte_6	gte_7...
+
 >test_0001	1.00	0.23	0.15	0.03	0.02	0.01	0.00	0.00...
 
 DOC_test.sample_cumulative_coverage_counts：结果同上，只是输出不是比例，而是确切位点数，从这也可以看出我们的区域大小是`46584178`
 >	gte_0	gte_1	gte_2	gte_3	gte_4...
+
 >NSamples_1	46584178	10647046	6806354	1585048...
 
 DOC_test.sample_statistics：上述为深度覆盖的累积分布，这一项结果为每一个深度确切位点数。位点深度为0的位点数为`35937132`正好是`gte_0-gte_1(46584178-10647046)	`
 >Source_of_reads	from_0_to_1)	from_1_to_2)	from_2_to_3)...
+
 >sample_test_0001	35937132	3840692	5221306...
 
 DOC_test.sample_interval_statistics：**平均深度**超过x的区域数目，因为是超过的统计，所以大于1的肯定也会统计到大于0的里面。而且从这也可以看出我们的bed区域一共有多少区域（`223775`）
 >	depth>=0	depth>=1	depth>=2...
+
 >At_least_1_samples	223775	51442	29119...
 
 DOC_test.sample_interval_summary：每个区域的深度详情，第一列为区域，第二列为总深度，第三列为平均深度，第四列~第九列是一个样本的（总深度、平均深度、1分位、中位数、三分位及默认的超过15X的区域在该区域中所占比例）
->Target	total_coverage	average_coverage	test_0001_total_cvg	test_0001_mean_cvg	test_0001_granular_Q1	test_0001_granular_median	test_0001_granular_Q3	test_0001_%_above_15
-chr1:17346-17452	0	0.00	0	0.00	1	1	1	0.0
-chr1:30371-30507	0	0.00	0	0.00	1	1	1	0.0
-chr1:69056-69689	0	0.00	0	0.00	1	1	1	0.0
+>Target	total_coverage	average_coverage	test_0001_total_cvg	test_0001_mean_cvg	test_0001_granular_Q1	
+
+>test_0001_granular_median	test_0001_granular_Q3	test_0001_%_above_15
+
+>chr1:17346-17452	0	0.00	0	0.00	1	1	1	0.0
+
+>chr1:30371-30507	0	0.00	0	0.00	1	1	1	0.0
+
+>chr1:69056-69689	0	0.00	0	0.00	1	1	1	0.0
 
 
 
