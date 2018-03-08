@@ -96,9 +96,7 @@ style: plain
 
 
 $$
-
-\widehat{p}=r[1+\frac{(1-r^2)}{2(n-4)}]
-
+\hat{p}=r[1+\frac{(1-r^2)}{2(n-4)}]
 $$ 
 
 
@@ -116,9 +114,9 @@ $$
 2. 有些差异就是机器学习的regression都是利用差值来进行寻找最小误差，从而获得最优模型。最终评估结果也是利用差异大小来评估，使用差值就不存在Instant accuracy和Hold accuracy了。
 
 
+
 $$
 \frac{\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2}{2}+\frac{(x_3-\hat{x})^2+(x_4-\hat{x})^2}{2}}{2}=\frac{(x_1-\hat{x})^2+(x_2-\hat{x})^2+(x_3-\hat{x})^2+(x_4-\hat{x})^2}{4}
-
 $$
 
 
