@@ -29,8 +29,7 @@
     * [Interpreting P values](statics/Interpreting-P-values.md)
     * [Principal component analysis](statics/Principal-component-analysis.md)
     * [Ensemble methods: bagging and random forests](statics/Ensemble-methods-bagging-and-random-forests.md)
-
------
 * [软件](softwares/README.md)
     * [GATK](softwares/gatk.md)
+    * [celery](softwares/celery.md)
 
