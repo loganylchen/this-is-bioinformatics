@@ -32,4 +32,6 @@
 * [软件](softwares/README.md)
     * [GATK](softwares/gatk.md)
     * [celery](softwares/celery.md)
+* [编程语言](language/README.md)
+    * [python](language/python.md)
 
