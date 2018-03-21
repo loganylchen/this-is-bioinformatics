@@ -4,6 +4,11 @@
 
 ## 安装
 
+
+### linux 安装
+
+
+
 ### windows 安装
 
 
@@ -17,3 +22,9 @@ import pymysql
 pymysql.install_as_MySQLdb()
 ```
 3. 连接数据库进行更新的时候，还会产生`Incorrect string value`的错误。是返回的result的字符串填写到mysql中的时候就变成奇怪的字符串了。
+
+
+### 可选的安装
+
+1. 在linux上想要使用`rabbitmq`，需要提前安装，而在安装`rabbitmq`之前，还需要安装`erlang`。
+2. 安装`erlang`的时候会被提示`configure: error: No curses library functions found`，说明缺少curses，需要在安装`ncurses-devel`
