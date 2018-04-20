@@ -4,6 +4,7 @@
 * [概论](introductions/README.md)
     * [变异检测](introductions/variants-calling.md)
 * [转录组学](transcriptom/README.md)
+    * [转录组的现状及未来](transcriptom/now-and-future.md)
     * [PAR-CLIP](transcriptom/par-clip.md)
 * [Pipeline](pipeline/README.md)
     * [RNAseq](pipeline/RNAseq-pipeline.md)
