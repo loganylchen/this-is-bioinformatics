@@ -3,6 +3,8 @@
 * [Introduction](README.md)
 * [概论](introductions/README.md)
     * [变异检测](introductions/variants-calling.md)
+* [转录组学](transcriptom/README.md)
+    * [PAR-CLIP](transcriptom/par-clip.md)
 * [Pipeline](pipeline/README.md)
     * [RNAseq](pipeline/RNAseq-pipeline.md)
 * [方法](methods/README.md)
